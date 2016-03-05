@@ -11,7 +11,9 @@ class WiiClassic{
     bool isZLButtonPressed();
     bool isZRButtonPressed();
     bool isLeftDPadPressed();
-    bool isDownDPaddPressed();
+    bool isDownDPadPressed();
+    bool isRightDPadPressed();
+    bool isUpDPadPressed();
   private:
     byte getByte(int byte);
     void zero();

@@ -55,6 +55,22 @@ bool WiiClassic::isZRButtonPressed(){
   return isButtonPressed(5, 0x04);
 }
 
+bool WiiClassic::isLeftDPadPressed(){
+  return isButtonPressed(5, 0x02);
+}
+
+bool WiiClassic::isUpDPadPressed(){
+  return isButtonPressed(5, 0x01);
+}
+
+bool WiiClassic::isDownDPadPressed(){
+  return isButtonPressed(4, 0x40);
+}
+
+bool WiiClassic::isRightDPadPressed(){
+  return isButtonPressed(4, 0x80);
+}
+
 byte WiiClassic::getByte(int byte){
   return buffer[byte];
 }
