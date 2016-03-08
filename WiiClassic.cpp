@@ -91,6 +91,25 @@ bool WiiClassic::isRightTriggerPressed(){
   return isButtonPressed(4, 0x2);
 }
 
+int WiiClassic::getLeftXValue(){
+  return (int) (getByte(0) & ~0xC0);
+}
+
+int WiiClassic::getLeftYValue(){
+  return (int) (getByte(1) & ~0xC0);
+}
+
+int WiiClassic::getRightYValue(){
+  return (int) (getByte(2) & ~0xE0);
+}
+
+int WiiClassic::getRightXValue(){
+  byte highBits = getByte(0) & 0xC0;
+  byte midBits = (getByte(1) & 0xC0) >> 2;
+  byte lowBit = (getByte(2) & 0x80) >> 4;
+  return (highBits | midBits | lowBit) >> 3;
+}
+
 byte WiiClassic::getByte(int byte){
   return buffer[byte];
 }

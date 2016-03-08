@@ -19,8 +19,12 @@ class WiiClassic{
     bool isHomeButtonPressed();
     bool isPlusButtonPressed();
     bool isRightTriggerPressed();
-  private:
+    int getLeftYValue();
+    int getLeftXValue();
+    int getRightYValue();
+    int getRightXValue();
     byte getByte(int byte);
+  private:
     void zero();
     byte buffer[6];
 };
