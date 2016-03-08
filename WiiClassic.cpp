@@ -71,6 +71,26 @@ bool WiiClassic::isRightDPadPressed(){
   return isButtonPressed(4, 0x80);
 }
 
+bool WiiClassic::isLeftTriggerPressed(){
+  return isButtonPressed(4, 0x20);
+}
+
+bool WiiClassic::isMinusButtonPressed(){
+  return isButtonPressed(4, 0x10);
+}
+
+bool WiiClassic::isHomeButtonPressed(){
+  return isButtonPressed(4, 0x8);
+}
+
+bool WiiClassic::isPlusButtonPressed(){
+  return isButtonPressed(4, 0x4);
+}
+
+bool WiiClassic::isRightTriggerPressed(){
+  return isButtonPressed(4, 0x2);
+}
+
 byte WiiClassic::getByte(int byte){
   return buffer[byte];
 }
