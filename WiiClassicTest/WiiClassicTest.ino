@@ -1,4 +1,4 @@
-#include <Wire.h>
+#define tinyWire true
 #include <WiiClassic.h>
 
 WiiClassic pro;
@@ -6,7 +6,6 @@ WiiClassic pro;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  Wire.begin();
   pro.begin();
 }
 

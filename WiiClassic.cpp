@@ -1,6 +1,15 @@
 #include <Arduino.h>
 #include <WiiClassic.h>
-#include <Wire.h>
+
+# ifdef tinyWire
+  #include <TinyWireM.h>
+  #define wire TinyWireM
+#else
+  #include <Wire.h>
+  #define wire Wire
+#endif
+  
+
 
 WiiClassic::WiiClassic(){
   for(int i = 0; i < 6; i++){
@@ -9,19 +18,20 @@ WiiClassic::WiiClassic(){
 }
 
 void WiiClassic::begin(){
-  Wire.beginTransmission(0x52);
-  Wire.write((byte) 0xF0);
-  Wire.write((byte) 0x55);
-  Wire.write((byte) 0xFB);
-  Wire.write((byte) 0x00);
-  Wire.endTransmission();
+  wire.begin();
+  wire.beginTransmission(0x52);
+  wire.write((byte) 0xF0);
+  wire.write((byte) 0x55);
+  wire.write((byte) 0xFB);
+  wire.write((byte) 0x00);
+  wire.endTransmission();
 }
 
 void WiiClassic::update(){
-  Wire.requestFrom(0x52, 6);
+  wire.requestFrom(0x52, 6);
   int i = 0;
-  while (Wire.available() && i < 6) {
-    buffer[i] = Wire.read();
+  while (wire.available() && i < 6) {
+    buffer[i] = wire.read();
     i = i + 1;
   }
   zero();
@@ -115,7 +125,7 @@ byte WiiClassic::getByte(int byte){
 }
 
 void WiiClassic::zero(){
-  Wire.beginTransmission(0x52);
-  Wire.write(0x00);
-  Wire.endTransmission();
+  wire.beginTransmission(0x52);
+  wire.write(0x00);
+  wire.endTransmission();
 }
