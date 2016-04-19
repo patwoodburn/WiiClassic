@@ -1,3 +1,4 @@
+#include <Arduino.h>
 class WiiClassic{
   public:
     WiiClassic();
